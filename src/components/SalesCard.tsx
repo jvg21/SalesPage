@@ -1,20 +1,21 @@
 import { useWindowSize } from "@uidotdev/usehooks";
 import { useEffect, useState } from "react";
 import styled from "styled-components"
+import { RiArrowDropDownLine } from "react-icons/ri";
+import { IoIosArrowUp } from "react-icons/io";
 
-const Div2 = styled.div<{display:boolean}>`
+const Div2 = styled.div<{ display: boolean }>`
     width: 100%;
-    display: ${(props)=> props.display?'flex':'none'};
+    display: ${(props) => props.display ? 'flex' : 'none'};
     justify-content: space-evenly;
     flex-direction: column;
     align-items: center;
 `;
 
-
-const SaleCard = styled.div<{dropdown:boolean}>`
+const SaleCard = styled.div<{ dropdown: boolean }>`
 
     background-color: white;
-    height: ${(props)=> props.dropdown?'180px':'450px'};
+    height: ${(props) => props.dropdown ? '250px' : '420px'};
     width: 300px;
     display: flex;
     justify-content: space-between;
@@ -64,6 +65,10 @@ const SalesButton = styled.button`
 const SalesButtonInfo = styled(SalesButton)`
     background-color: #dbdb03;
     color: black;
+
+    &:hover{
+        background-color: #dba903;
+    }
 `;
 const SalesTittleText = styled.p`
     display: flex;
@@ -88,46 +93,58 @@ const ButtonDiv = styled.div`
 `;
 
 
-export default function SalesCard(props: { titulo1:string ,titulo2: string, preco: string}) {
-    const preco = `R$ ${props.preco}`
+export default function SalesCard(props: { titulo1: string, titulo2: string, preco: string }) {
+    const minWidth = 430 
 
-    const [dropdown,setDropdown] = useState(false);
+    const preco = `R$ ${props.preco}`
     const size = useWindowSize();
 
-    
-    useEffect(()=>{
-        if(size.height && size.height<=280) 
-    {setDropdown(true)}
-    else{
-        setDropdown(false)
+    const sizeVerification = size.height && size.height <= minWidth
+    const [dropdown, setDropdown] = useState(sizeVerification);
+
+    const DropDownIconConfig = ()=>{
+        if (sizeVerification){
+            setDropdown(!dropdown)
+        }
     }
-    },[size])
-    
+
+
+    const sizeController = useEffect(() => {
+        size.height && size.height <= minWidth ? setDropdown(true) : setDropdown(false)
+    }, [size])
+
     return (
         <>
-        <SaleCard dropdown={dropdown}>
-            <SalesTittle>
-                <SalesTittleText>{props.titulo2}</SalesTittleText>
-            </SalesTittle>
-            <h1>{preco}</h1>
 
-
-            <Div2 display={!dropdown}>
+            <SaleCard dropdown={dropdown||false}>
                 <SalesTittle>
-                    <SalesTittleText>{props.titulo1}</SalesTittleText>
+                    <SalesTittleText>{props.titulo2}</SalesTittleText>
                 </SalesTittle>
-                <div style={{height:'20px'}}></div>
                 <h1>{preco}</h1>
-                <div style={{height:'20px'}}></div>
-                <SalesText>2º LOTE ATÉ 20/3/2024<br/>*Enquanto houver vagas<br/> 3º LOTE: R$350,00 / R$450,00</SalesText>
-            </Div2>
-            
-            <ButtonDiv>
-                <SalesButton>Comprar</SalesButton>
-                <SalesButtonInfo>Info</SalesButtonInfo>
-            </ButtonDiv>
-            
-        </SaleCard>
+
+                <SalesTittle onClick={()=>DropDownIconConfig()}>
+                    <SalesTittleText>{props.titulo1}</SalesTittleText>
+                    {
+                        sizeVerification && dropdown && <RiArrowDropDownLine size={'50px'} />
+                        ||
+                        sizeVerification && <IoIosArrowUp size={'25px'}/>
+                    }
+                </SalesTittle>
+
+                <Div2 display={!dropdown}>
+                    <h1>{preco}</h1>
+                    <div style={{ height: '20px' }}></div>
+                    <SalesText>2º LOTE ATÉ 20/3/2024<br />*Enquanto houver vagas<br /> 3º LOTE: R$350,00 / R$450,00</SalesText>
+                </Div2>
+
+                <ButtonDiv>
+                    <SalesButton>Comprar</SalesButton>
+                    {
+                        !dropdown && <SalesButtonInfo>Info</SalesButtonInfo>
+                    }
+                </ButtonDiv>
+
+            </SaleCard>
 
         </>
     )
