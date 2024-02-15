@@ -1,9 +1,9 @@
-import SalesPage from './components/SalesPage'
+import { PricingPage } from "./components/PricingPage"
 
 function App() {
 
   return (
-    <SalesPage/>
+    <PricingPage/>
   )
 }
 
