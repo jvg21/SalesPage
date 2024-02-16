@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { SalesPageButton } from "../salescardbutton/SalesPageButton";
 
 const SalesCard = styled.div`
   
@@ -11,10 +12,16 @@ const SalesCard = styled.div`
   text-align: left;
   flex-direction: column;
 
-  border: 2px solid darkgray;
+  border: 1px solid #afafaf4f;
   border-radius: 15px;
 
   font-family: Monserat,sans-serif;
+
+  margin: 0px 1vw;
+
+  &:hover{
+    border-color: darkgrey;
+  }
 
   li{
     margin: 10px;
@@ -30,30 +37,11 @@ const SalesCard = styled.div`
 
   p,li{
     color: gray;
-
     font-size: 16px;
   }
 
-  button{
-    color: #000;
-    background-color: transparent;
-
-    font-weight: 700;
-    font-size: 18px;
-
-    height: 40px;
-
-    display: flex;
-    align-items: center;
-    justify-content: left;
-    border: 0px;
-
-    cursor: pointer;
-
-  }
-  button:hover{
-    text-decoration: underline;
-    
+  @media screen and (max-width: 400px){
+    width: 90vw;
   }
 `;
 
@@ -62,7 +50,7 @@ export default function WhiteSalesCard() {
   return (
     <>
     <SalesCard>
-      <h2>Tittle</h2>
+      <h2>Title</h2>
       <p>Convêniado</p>
       <h1>$250,00</h1>
       <p>Não Convêniado</p>
@@ -74,7 +62,7 @@ export default function WhiteSalesCard() {
         <li>lorem lorem</li>
         <li>lorem lorem</li>
       </ul>
-      <button>Comprar</button>
+      <SalesPageButton url="">Comprar</SalesPageButton>
     </SalesCard>
     </>
   );
