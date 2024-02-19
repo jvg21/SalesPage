@@ -10,7 +10,8 @@
             "2º LOTE ATÉ 20/3/2024",
             "*enquanto hover vagas",
             "3º LOTE: R$350,00 / R$450,00"
-        ]
+        ],
+        "url": "#academico"
     },
     {   
         "id":1,
@@ -23,7 +24,8 @@
             "2º LOTE ATÉ 20/3/2024",
             "*enquanto hover vagas",
             "3º LOTE: R$650,00 / R$800,00"
-        ]
+        ],
+        "url": "#profissional"
     }
     
 ]

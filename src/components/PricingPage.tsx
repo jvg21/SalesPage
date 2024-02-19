@@ -5,7 +5,10 @@ import QuestionCard from "./presentation/questioncard/QuestionCard";
 import CollapsibleCard from "./presentation/imagecard/ImageCard";
 import InfoCard from "./presentation/infocard/InfoCard";
 import { PageTheme } from "./presentation/themeconfig/ThemeConfig";
-import TextConstants from './../infrastructure/PricingInfo.json'
+import PricingInfo from './../infrastructure/PricingInfo.json'
+import ConstantTexts from './../infrastructure/ConstantTexts.json'
+import Questions from './../infrastructure/Questions.json'
+import Urls from './../infrastructure/Urls.json'
 import { useRef } from "react";
 
 
@@ -76,7 +79,7 @@ const CardsDisplayDiv = styled(StandartDiv)`
     justify-content:space-evenly;
     flex-direction: row;
     flex-wrap: wrap;
-    padding: 0 15px;
+    padding: 2px 15px;
     gap: 10px;
 `;
 
@@ -89,8 +92,6 @@ const FAQDisplayDiv = styled(StandartDiv)`
     gap: 10px;
 `;
 
-const imageUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-W4xjGG0vhPQk4yr42TcZyTi9TRvlXI7rRc2uQ4P__g&s"
-
 export function PricingPage() {
 
     const ref = useRef<HTMLDivElement | null>(null);
@@ -99,34 +100,36 @@ export function PricingPage() {
     return (
         <>
             <PricingPageHomeDiv>
-                <T1>Seu Texto Aqui</T1>
-                <T3>Outro Texto Aqui</T3>
-                <PricingPageHomeButton onClick={() => handleClick()}>Botão</PricingPageHomeButton>
+                <T1>{ConstantTexts.HomeDivTitle}</T1>
+                <T3>{ConstantTexts.HomeDivSubtitle}</T3>
+                <PricingPageHomeButton onClick={() => handleClick()}>{ConstantTexts.HomeDivButtonText}</PricingPageHomeButton>
             </PricingPageHomeDiv>
 
             <PricingPagesSecondDiv>
                 <PricingPageInfoDiv>
-                    <T2>Choose the cloud solutions you need</T2>
-                    <Paragraph>Our sales team can help you find the best mix of cloud solutions to meet the unique needs of your business.</Paragraph>
-                    <SalesPageButton url="">Get Help From Our Sales Team</SalesPageButton>
+                    <T2>{ConstantTexts.SecondDivTitle}</T2>
+                    <Paragraph>{ConstantTexts.SecondDivParagraph}</Paragraph>
+                    <SalesPageButton url={Urls.AjudaUrl}>{ConstantTexts.SecondDivButton}</SalesPageButton>
                 </PricingPageInfoDiv>
                 <CardsDisplayDiv ref={ref}>
-                    <WhiteSalesCard salesInfo={TextConstants[0]} />
-                    <WhiteSalesCard salesInfo={TextConstants[1]} />
+                    <WhiteSalesCard salesInfo={PricingInfo[0]} />
+                    <WhiteSalesCard salesInfo={PricingInfo[1]} />
                 </CardsDisplayDiv>
 
                 <FAQDisplayDiv>
-                    <QuestionCard title="What forms of payment do you accept?" info="lorensadsaasdasd" />
-                    <QuestionCard title="What forms of payment do you accept?" info="lorensadsaasdasd" />
-                    <QuestionCard title="What forms of payment do you accept?" info="lorensadsaasdasd" />
+                    {
+                        Questions.map((question)=>{
+                            return(<QuestionCard key={question.id} title={question.Title} info={question.Description}/>)
+                        })
+                    }
 
                 </FAQDisplayDiv>
 
                 <CardsDisplayDiv>
 
-                    <CollapsibleCard imageSrc={imageUrl} title="dsasddsa" description="lorem ipsum ramdat ramidet hui ddsf" buttonSrc='www.google.com'></CollapsibleCard>
-                    <CollapsibleCard  imageSrc={imageUrl} title="dsasddsa" description="lorem ipsum ramdat ramidet hui ddsf" buttonSrc='www.google.com'></CollapsibleCard>
-                    <CollapsibleCard imageSrc={imageUrl} title="dsasddsa" description="lorem ipsum ramdat ramidet hui ddsf" buttonSrc='www.google.com'></CollapsibleCard>
+                    <CollapsibleCard imageSrc={Urls.ImageUrl} title="dsasddsa" description="lorem ipsum ramdat ramidet hui ddsf" buttonSrc='www.google.com'></CollapsibleCard>
+                    <CollapsibleCard imageSrc={Urls.ImageUrl} title="dsasddsa" description="lorem ipsum ramdat ramidet hui ddsf" buttonSrc='www.google.com'></CollapsibleCard>
+                    <CollapsibleCard imageSrc={Urls.ImageUrl} title="dsasddsa" description="lorem ipsum ramdat ramidet hui ddsf" buttonSrc='www.google.com'></CollapsibleCard>
                 </CardsDisplayDiv>
 
             </PricingPagesSecondDiv>

@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { useWindowSize } from "@uidotdev/usehooks";
 import { SalesCardType } from "../../../types/salescardtype/SalesCardType";
 import { RiArrowDropDownLine } from "react-icons/ri";
-
+import Urls from './../../../infrastructure/Urls.json';
 
 const SalesCard = styled.div<{ height: number }>`
   height: ${({ height }) => (height)}px;
@@ -118,7 +118,7 @@ export default function WhiteSalesCard({salesInfo}:{salesInfo:SalesCardType}) {
 
         }
 
-        <SalesPageButton url="">Comprar</SalesPageButton>
+        <SalesPageButton url={salesInfo.url}>Comprar</SalesPageButton>
       </SalesCard>
     </>
   );

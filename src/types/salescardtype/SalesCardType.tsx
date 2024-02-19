@@ -6,5 +6,6 @@ export type SalesCardType = {
     Price1:string,
     Subtitle2:string,
     Price2:string,
-    Info: string[]
+    Info: string[],
+    url:string
 }
