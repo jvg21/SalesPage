@@ -1,5 +1,6 @@
 import { PricingPage } from "./components/PricingPage"
 
+
 function App() {
 
   return (

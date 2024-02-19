@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 import { SalesPageButton } from '../salescardbutton/SalesPageButton';
+import { PageTheme } from '../themeconfig/ThemeConfig';
 
 const CardContainer = styled.div`
-  border: 1px solid #ccc;
+  border: 1px solid ${PageTheme.tertiaryColor};
   border-radius: 15px;
   margin: 10px;
   max-width: 300px;

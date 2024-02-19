@@ -1,0 +1,29 @@
+[
+    {
+        "id":0,
+        "Title": "Acadêmicos de Graduação",
+        "Subtitle1": "Conveniados",
+        "Price1": "250,00",
+        "Subtitle2": "Não Conveniados",
+        "Price2": "350,00",
+        "Info":[
+            "2º LOTE ATÉ 20/3/2024",
+            "*enquanto hover vagas",
+            "3º LOTE: R$350,00 / R$450,00"
+        ]
+    },
+    {   
+        "id":1,
+        "Title": "Profissionais",
+        "Subtitle1": "Conveniados",
+        "Price1": "450,00",
+        "Subtitle2": "Não Conveniados",
+        "Price2": "650,00",
+        "Info":[
+            "2º LOTE ATÉ 20/3/2024",
+            "*enquanto hover vagas",
+            "3º LOTE: R$650,00 / R$800,00"
+        ]
+    }
+    
+]

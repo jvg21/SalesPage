@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { GrFormNextLink } from "react-icons/gr";
+import { PageTheme } from "../themeconfig/ThemeConfig";
 const SalesButton = styled.button`
     background-color: transparent;
     height: 40px;
@@ -10,7 +11,7 @@ const SalesButton = styled.button`
     cursor: pointer;
 
     a{
-        color: #000;
+        color: ${PageTheme.primaryTextColor};
         position: relative;
         padding: 0 2px;
         display: inline-flex;
@@ -22,7 +23,7 @@ const SalesButton = styled.button`
         text-decoration: none;
     }
     a:after{
-        background-color: #000;
+        background-color: ${PageTheme.primaryTextColor};
         position: absolute;
         left: 0;
         bottom: 0px;
@@ -32,7 +33,7 @@ const SalesButton = styled.button`
         transition: 0.3s;
     }
     a:hover{
-        color: #000;
+        color: ${PageTheme.primaryTextColor};
 
         span{
             font-size: 22px;

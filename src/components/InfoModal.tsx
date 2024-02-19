@@ -15,7 +15,6 @@ const InfoModalDiv = styled.div`
   padding: 3vw;
   overflow-x: auto;
 
-
   @media screen and (max-width: 450px) {
     margin: 0 3vw;
     width: 75vw;
