@@ -5,9 +5,10 @@ import { useEffect, useState } from "react";
 import { useWindowSize } from "@uidotdev/usehooks";
 import { SalesCardType } from "../../../types/salescardtype/SalesCardType";
 import { RiArrowDropDownLine } from "react-icons/ri";
-import Urls from './../../../infrastructure/Urls.json';
 
-const SalesCard = styled.div<{ height: number }>`
+const SalesCard = styled.div<{ height: number, background?: string, textcolor?: string, secundarytextcolor?: string, bordercolor?: string, borderhovercolor?: string }>`
+  background-color: ${(props) => props.background ? props.background : '#fff'};
+  color: ${(props) => props.textcolor ? props.textcolor : '#000'};
   height: ${({ height }) => (height)}px;
   width: 300px;
   padding: 25px 30px;
@@ -16,18 +17,18 @@ const SalesCard = styled.div<{ height: number }>`
   text-align: left;
   flex-direction: column;
   overflow-x: auto;
-  border: 1px solid ${PageTheme.tertiaryColor};
+  border: 1px solid ${(props) => props.bordercolor ? props.bordercolor : '#000'};
   border-radius: 15px;
   font-family: Monserat,sans-serif;
   margin: 0px 1vw;
-  transition: all 0.3s ease-out;
+  transition: all 0.5s ease-out;
 
   &:hover{
-    border-color: ${PageTheme.primaryTextColor};
+    border:1.2px solid ${(props) => props.borderhovercolor ? props.borderhovercolor : '#000'};
   }
 
   li{
-    color: ${PageTheme.tertiaryTextColor};
+    color: ${(props) => props.secundarytextcolor ? props.secundarytextcolor : '#000'};
     margin: 10px;
     list-style: none;
     font-size: 14px;
@@ -36,14 +37,16 @@ const SalesCard = styled.div<{ height: number }>`
   hr{
     border: none;
     height: 1px;
-    background: ${PageTheme.tertiaryColor};
+    background: ${(props) => props.secundarytextcolor ? props.secundarytextcolor : '#000'};
     background: repeating-linear-gradient(90deg,#cfcfcf,#cfcfcf 3px,transparent 3px,transparent 10px);
   }
 
   p{
-    color: ${PageTheme.tertiaryTextColor};
+    color: ${(props) => props.secundarytextcolor ? props.secundarytextcolor : '#000'};
     font-size: 16px;
   }
+
+
 
   @media screen and (max-width: 400px){
     width: 90vw;
@@ -74,7 +77,14 @@ const cardHeight = {
   fullHeight: 450
 }
 
-export default function WhiteSalesCard({salesInfo}:{salesInfo:SalesCardType}) {
+export default function WhiteSalesCard(props: {
+  salesInfo: SalesCardType,
+  background?: string,
+  textcolor?: string,
+  secundarytextcolor?: string,
+  bordercolor?: string,
+  borderhovercolor?: string
+}) {
 
   const size = useWindowSize();
   const sizeVerification = size.height && size.height <= cardHeight.fullHeight;
@@ -88,28 +98,29 @@ export default function WhiteSalesCard({salesInfo}:{salesInfo:SalesCardType}) {
 
   return (
     <>
-      <SalesCard height={dropDown ? cardHeight.mobileHeight : cardHeight.fullHeight} onClick={() => OpenDropDown()}>
+      <SalesCard background={props.background} textcolor={props.textcolor} secundarytextcolor={props.secundarytextcolor} bordercolor={props.bordercolor} borderhovercolor={props.borderhovercolor}
+        height={dropDown ? cardHeight.mobileHeight : cardHeight.fullHeight} onClick={() => OpenDropDown()}>
         <TitleDiv>
-          <h2>{salesInfo.Title}</h2>
+          <h2>{props.salesInfo.Title}</h2>
           {sizeVerification &&
             <DropDownButton rotated={!dropDown}>
-              <RiArrowDropDownLine/>
+              <RiArrowDropDownLine />
             </DropDownButton>
           }
         </TitleDiv>
 
-        <p>{salesInfo.Subtitle1}</p>
-        <h1>{salesInfo.Price1}</h1>
-        <p>{salesInfo.Subtitle2}</p>
-        <h1>{salesInfo.Price2}</h1>
+        <p>{props.salesInfo.Subtitle1}</p>
+        <h1>{props.salesInfo.Price1}</h1>
+        <p>{props.salesInfo.Subtitle2}</p>
+        <h1>{props.salesInfo.Price2}</h1>
         {
           !dropDown &&
           <>
             <hr />
             <ul>
               {
-                salesInfo.Info.map((x)=>{
-                  return(<li>{x}</li>)
+                props.salesInfo.Info.map((x) => {
+                  return (<li>{x}</li>)
                 })
 
               }
@@ -118,7 +129,7 @@ export default function WhiteSalesCard({salesInfo}:{salesInfo:SalesCardType}) {
 
         }
 
-        <SalesPageButton url={salesInfo.url}>Comprar</SalesPageButton>
+        <SalesPageButton textcolor={props.textcolor} url={props.salesInfo.url}>Comprar</SalesPageButton>
       </SalesCard>
     </>
   );

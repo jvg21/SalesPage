@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import { GrFormNextLink } from "react-icons/gr";
 import { PageTheme } from "../themeconfig/ThemeConfig";
-const SalesButton = styled.button`
+
+const SalesButton = styled.button<{textcolor?:string}>`
     background-color: transparent;
     height: 40px;
     display: flex;
@@ -11,7 +12,7 @@ const SalesButton = styled.button`
     cursor: pointer;
 
     a{
-        color: ${PageTheme.primaryTextColor};
+        color: ${(props)=>props.textcolor?props.textcolor:"black"};
         position: relative;
         padding: 0 2px;
         display: inline-flex;
@@ -23,7 +24,7 @@ const SalesButton = styled.button`
         text-decoration: none;
     }
     a:after{
-        background-color: ${PageTheme.primaryTextColor};
+        background-color: ${(props)=>props.textcolor?props.textcolor:"black"};
         position: absolute;
         left: 0;
         bottom: 0px;
@@ -33,7 +34,7 @@ const SalesButton = styled.button`
         transition: 0.3s;
     }
     a:hover{
-        color: ${PageTheme.primaryTextColor};
+        color: ${(props)=>props.textcolor?props.textcolor:"black"};
 
         span{
             font-size: 22px;
@@ -49,10 +50,10 @@ const SalesButton = styled.button`
     
 `;
 
-export function SalesPageButton(props: { children: string,url:string }) {
+export function SalesPageButton(props: { children: string,url:string,textcolor?:string }) {
     return (
         // <a href={props.url} target="_blanck">
-        <SalesButton >
+        <SalesButton textcolor={props.textcolor}>
             <a target="_blanck" href={props.url}>
                 {props.children}
                 <span><GrFormNextLink /></span>

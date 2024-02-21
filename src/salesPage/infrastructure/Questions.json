@@ -1,0 +1,33 @@
+[
+    {
+        "id":0,
+        "Title":"Como obtenho o descontro de convênio? (ACADÊMICOS)",
+        "Description":[
+            "Para obter o valor de conveniado na categoria acadêmico de graduação, é necessário que a sua Instituição de Ensino Superior seja conveniada e lhe forneça cupom promocional para ser inserido no ato da inscrição.",
+            "Entre em contato conosco (simposio@abdconst.com.br) e garanta este benefício!",
+            "* Se houver vagas nesta categoria, de acordo com a Lei nº 12.933/2013.",
+            "* Se houver vagas nesta categoria, de acordo com a Lei nº 12.933/2013.",
+            "(consulte valores no Regulamento do XV Simpósio)"
+        ]
+    },
+    {
+        "id":1,
+        "Title":"Como obtenho o descontro de convênio? (PROFISSIONAIS)",
+        "Description":[
+            "Para obter o valor de conveniado na categoria profissional (isto é, todos aqueles que não se enquadrem como acadêmico de graduação), é necessário que faça parte de alguma instituição (associação, faculdade, organização, sindicato e outros) conveniada. Para estabelecer convênio e garantir este benefício, entre em contato conosco (simposio@abdconst.com.br).",
+            "* Destinados a ex-alunos da ABDConst.",
+            "* As inscrições por empenho seguem o último valor da tabela",
+            "(consulte valores no Regulamento do XV Simpósio)"
+        ]
+    },
+    {
+        "id":2,
+        "Title":"Title",
+        "Description":["loresadadsdasdsaasddassaddassad"]
+    },
+    {
+        "id":3,
+        "Title":"Title",
+        "Description":["loresadadsdasdsaasddassaddassad"]
+    }
+]

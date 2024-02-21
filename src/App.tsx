@@ -1,4 +1,4 @@
-import { PricingPage } from "./components/PricingPage"
+import { PricingPage } from "./salesPage/components/PricingPage"
 
 
 function App() {

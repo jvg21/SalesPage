@@ -2,7 +2,9 @@ import styled from 'styled-components';
 import { SalesPageButton } from '../salescardbutton/SalesPageButton';
 import { PageTheme } from '../themeconfig/ThemeConfig';
 
-const CardContainer = styled.div`
+const CardContainer = styled.div<{ background?: string, textcolor?: string }>`
+  background-color: ${(props) => props.background};
+  color: ${(props) => props.textcolor ? props.textcolor : '#000'};
   border: 1px solid ${PageTheme.tertiaryColor};
   border-radius: 15px;
   margin: 10px;
@@ -38,11 +40,11 @@ const Description = styled.p`
 `;
 
 
-function CollapsibleCard(props: { imageSrc: string, title: string, description: string, buttonSrc: string }) {
+function ImageCard(props: { imageSrc: string, title: string, description: string, buttonSrc: string, background?:string,textcolor?:string }) {
     const { imageSrc, title, description } = props;
 
     return (
-        <CardContainer >
+        <CardContainer background={props.background} textcolor={props.textcolor}>
             <Image src={imageSrc} alt={title} />
             <Title>{title}</Title>
             <Description >
@@ -53,4 +55,4 @@ function CollapsibleCard(props: { imageSrc: string, title: string, description: 
     );
 };
 
-export default CollapsibleCard;
+export default ImageCard;
