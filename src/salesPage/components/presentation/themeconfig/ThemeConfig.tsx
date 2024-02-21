@@ -1,5 +1,7 @@
 export const PageTheme = {
     backGroundColor: '#fff',
+    secundaryBackGroundColor: '#F9FAFE',
+    tertiaryBackGroundColor: '#202020',
     primaryTextColor: '#000',
     secundaryTextColor: '#fff',
     tertiaryTextColor: '#808080',
@@ -7,5 +9,6 @@ export const PageTheme = {
     primaryHoverColor:'#680000',
     secundaryColor:'#fff',
     tertiaryColor: '#b3b3b3',
+    sucessGreen:'#023522'
   
   }

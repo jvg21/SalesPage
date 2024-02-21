@@ -5,8 +5,8 @@ import { FaPlus } from "react-icons/fa6";
 import { PageTheme } from "../themeconfig/ThemeConfig";
 
 // Definindo o estilo da div
-const Card = styled.div <{ background?:string,textcolor?: string }>`
-  background-color: ${(props) => props.background?props.background:'#fff'};
+const Card = styled.div <{ background?: string, textcolor?: string }>`
+  background-color: ${(props) => props.background ? props.background : '#fff'};
   color: ${(props) => props.textcolor ? props.textcolor : '#000'};
   border: 1px solid #ccc;
   border-radius: 15px;
@@ -22,17 +22,27 @@ const Card = styled.div <{ background?:string,textcolor?: string }>`
 
 const Title = styled.h3`
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     margin: 0;
 `;
 
-const Content = styled.div`
+const Content = styled.div<{ background?: string, textcolor?: string }>`
   margin-top: 10px;
   padding: 0 5px;
   display: flex;
   justify-content: left;
   text-align: justify;
+
+  button{
+    background-color: ${(props) => props.background ? props.background : '#000'};
+    padding: 5px;
+    border: none;
+  }
+  a{
+    text-decoration: none;
+    color: ${(props) => props.textcolor ? props.textcolor : '#fff'};
+  }
 
 `;
 
@@ -44,8 +54,12 @@ background-color: transparent;
   padding: 5px 10px;
   margin-top: 10px;
 `;
+type Link = {
+  title: string,
+  url: string
+}
 
-export default function QuestionCard(props: { title: string, info: string[], background?:string,textcolor?:string }) {
+export default function QuestionCard(props: { title: string, info: string[], link?: Link, background?: string, textcolor?: string }) {
 
   const [isCollapsed, setIsCollapsed] = useState(true);
 
@@ -61,12 +75,19 @@ export default function QuestionCard(props: { title: string, info: string[], bac
           {isCollapsed ? <FaPlus /> : <FaMinus />}
         </ToggleButton>
       </div>
-      <Content style={{ display: isCollapsed ? 'none' : 'block' }}>
-        <p>{
-          props.info.map((x) => {
-            return (<>{x}<br /><br /></>)
-          })
-        }</p>
+      <Content style={{ display: isCollapsed ? 'none' : 'block' }} background={props.textcolor} textcolor={props.background}>
+        <p>
+          {
+            props.info.map((x) => {
+              return (<>{x}<br /><br /></>)
+            })
+
+          }
+          {
+            props.link &&
+            <button><a href={props.link.url} target="_blanck">{props.link.title}</a></button>
+          }
+        </p>
       </Content>
     </Card>
   );

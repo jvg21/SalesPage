@@ -9,8 +9,9 @@ import ConstantTexts from './../infrastructure/ConstantTexts.json'
 import Questions from './../infrastructure/Questions.json'
 import Urls from './../infrastructure/Urls.json'
 import { useRef } from "react";
-import ImageCard from "./presentation/imagecard/ImageCard";
-
+import background from './../images/mainbg.png'
+import { useWindowSize } from "@uidotdev/usehooks";
+import { cardHeight } from "./cardheight/CardHeight";
 
 const StandartDiv = styled.div<{ background?: string }>`
     background-color: ${(props) => props.background ? props.background : 'trasparent'};
@@ -27,7 +28,7 @@ const StandartDiv = styled.div<{ background?: string }>`
 
 const T1 = styled.h1<{ textcolor?: string }>`
     color: ${(props) => props.textcolor ? props.textcolor : '#000'};
-    font-size : clamp(2.2rem, 5.5vw, 4rem);
+    font-size : clamp(2.2rem, 5vw, 3.5rem);
 `;
 
 const T2 = styled.h2<{ textcolor?: string }>`
@@ -47,19 +48,20 @@ const Paragraph = styled.p<{ textcolor?: string }>`
 `;
 
 const PricingPageHomeDiv = styled(StandartDiv)`
-background-image: url("https://github.com/jvg21/SalesPage/blob/main/src/salesPage/components/mainbg.png");
-    height: 450px;
+    /* margin-top: 92px; */
+    height: 95vh;
     padding: 10vw;
     gap: 10px;
 `;
 const PricingPageHomeButton = styled.button<{ background: string, textcolor?: string }>`
     background-color: ${(props) => props.background};
     color: ${(props) => props.textcolor ? props.textcolor : '#000'};
-    width: 20vw;
-    height: 40px;
+    width: 25vw;
+    padding: 15px 10px;
+    
     border: 0;
     border-radius: 10px;
-    font-size : clamp(1.5rem, 1.8vw, 2rem);
+    font-size : clamp(1rem, 1.3vw, 1.7rem);
     cursor: pointer;
     
     &:hover{
@@ -83,11 +85,12 @@ const CardsDisplayDiv = styled(StandartDiv)`
     justify-content:space-evenly;
     flex-direction: row;
     flex-wrap: wrap;
-    padding: 2px 15px;
+    padding: 10px 15px;
     gap: 10px;
 `;
 
 const FAQDisplayDiv = styled(StandartDiv)`
+    align-items: start;
     justify-content:space-evenly;
     flex-direction: row;
     flex-wrap: wrap;
@@ -95,62 +98,87 @@ const FAQDisplayDiv = styled(StandartDiv)`
     gap: 10px;
 `;
 
-export function PricingPage() {
+const TitleDiv = styled(StandartDiv)`
+    width: 100%;
+    height: 80px;
+    padding: 15px;
 
+`;
+
+export function PricingPage() {
+    const size = useWindowSize();
     const ref = useRef<HTMLDivElement | null>(null);
     const handleClick = () => ref.current?.scrollIntoView({ behavior: 'smooth' });
+    const refFaq = useRef<HTMLDivElement | null>(null);
+    const handleClick2 = () => refFaq.current?.scrollIntoView({ behavior: 'smooth' });
+
+    const sizeVerification = size.height&&size.height<=cardHeight.fullHeight;
 
     return (
         <>
-            <PricingPageHomeDiv background={PageTheme.primaryColor} >
+            <PricingPageHomeDiv background={PageTheme.primaryColor} style={{ backgroundImage: `url(${background})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
                 <T1 textcolor={PageTheme.secundaryTextColor} >{ConstantTexts.HomeDivTitle}</T1>
                 <T3 textcolor={PageTheme.secundaryTextColor} >{ConstantTexts.HomeDivSubtitle}</T3>
-                <PricingPageHomeButton background={PageTheme.secundaryColor} onClick={() => handleClick()}>{ConstantTexts.HomeDivButtonText}</PricingPageHomeButton>
+                <div style={{height:""}}> </div>
+                <PricingPageHomeButton background={PageTheme.sucessGreen}  textcolor={PageTheme.secundaryTextColor} onClick={() => handleClick()}>{ConstantTexts.HomeDivButtonPrice}</PricingPageHomeButton>
+                <PricingPageHomeButton background={PageTheme.sucessGreen} textcolor={PageTheme.secundaryTextColor} onClick={() => handleClick2()}>{ConstantTexts.HomeDivButtonFAQ}</PricingPageHomeButton>
             </PricingPageHomeDiv>
 
-            <PricingPagesSecondDiv>
-                <PricingPageInfoDiv>
-                    <T2>{ConstantTexts.SecondDivTitle}</T2>
+            <PricingPagesSecondDiv >
+                <PricingPageInfoDiv background={PageTheme.tertiaryBackGroundColor} >
+                    <T2 >{ConstantTexts.SecondDivTitle}</T2>
                     <Paragraph>{ConstantTexts.SecondDivParagraph}</Paragraph>
                     <SalesPageButton url={Urls.AjudaUrl}>{ConstantTexts.SecondDivButton}</SalesPageButton>
                 </PricingPageInfoDiv>
-                <CardsDisplayDiv ref={ref}>
+
+
+                <TitleDiv ref={!sizeVerification?ref:null} background={PageTheme.primaryColor} >
+                    <T3 textcolor={PageTheme.secundaryTextColor} >INVESTIMENTO E CONDIÇÕES ESPECIAIS</T3>
+                </TitleDiv>
+                <CardsDisplayDiv ref={sizeVerification?ref:null} background={PageTheme.backGroundColor}>
                     {
-                        PricingInfo.map((x)=>{
-                            return (<WhiteSalesCard salesInfo={x} borderhovercolor={PageTheme.primaryColor} bordercolor={PageTheme.tertiaryTextColor} secundarytextcolor={PageTheme.tertiaryTextColor}/>)
+                        PricingInfo.map((x) => {
+                            return (<WhiteSalesCard salesInfo={x} background={PageTheme.secundaryBackGroundColor} borderhovercolor={PageTheme.primaryColor} bordercolor={PageTheme.primaryTextColor} secundarytextcolor={PageTheme.tertiaryTextColor}  />)
                         })
                     }
-                 
+
                 </CardsDisplayDiv>
 
-                <FAQDisplayDiv>
+                <TitleDiv ref={refFaq} background={PageTheme.primaryColor}>
+                    <T3 textcolor={PageTheme.secundaryTextColor}>FAQ</T3>
+                </TitleDiv>
+                
+                <FAQDisplayDiv background={PageTheme.tertiaryBackGroundColor}>
                     {
                         Questions.map((question) => {
                             return (
                                 <QuestionCard
                                     background={PageTheme.primaryColor}
                                     textcolor={PageTheme.secundaryTextColor}
+
                                     key={question.id}
                                     title={question.Title}
-                                    info={question.Description} />
+                                    info={question.Description}
+                                    link={question.link} />
                             )
                         })
                     }
 
                 </FAQDisplayDiv>
 
-                <CardsDisplayDiv >
+                {/* <CardsDisplayDiv >
                     <ImageCard imageSrc={Urls.ImageUrl} title="dsasddsa" description="lorem ipsum ramdat ramidet hui ddsf" buttonSrc='www.google.com'></ImageCard>
                     <ImageCard imageSrc={Urls.ImageUrl} title="dsasddsa" description="lorem ipsum ramdat ramidet hui ddsf" buttonSrc='www.google.com'></ImageCard>
                     <ImageCard imageSrc={Urls.ImageUrl} title="dsasddsa" description="lorem ipsum ramdat ramidet hui ddsf" buttonSrc='www.google.com'></ImageCard>
-                </CardsDisplayDiv>
+                </CardsDisplayDiv> */}
+
+                <InfoCard background={PageTheme.primaryColor} bordercolor={PageTheme.tertiaryColor}>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nobis architecto ad quibusdam debitis eaque. Aliquam ab voluptatum quas quia, quo eum incidunt rerum repellendus. Eum corporis culpa quasi veniam sequi.</p>
+                    <button>xxxxxxxxxx</button>
+                </InfoCard>
 
             </PricingPagesSecondDiv>
 
-            <InfoCard background={PageTheme.primaryColor} bordercolor={PageTheme.tertiaryColor}>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nobis architecto ad quibusdam debitis eaque. Aliquam ab voluptatum quas quia, quo eum incidunt rerum repellendus. Eum corporis culpa quasi veniam sequi.</p>
-                <button>xxxxxxxxxx</button>
-            </InfoCard>
         </>
     );
 }

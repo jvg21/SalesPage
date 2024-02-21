@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { useWindowSize } from "@uidotdev/usehooks";
 import { SalesCardType } from "../../../types/salescardtype/SalesCardType";
 import { RiArrowDropDownLine } from "react-icons/ri";
+import { cardHeight } from "../../cardheight/CardHeight";
 
 const SalesCard = styled.div<{ height: number, background?: string, textcolor?: string, secundarytextcolor?: string, bordercolor?: string, borderhovercolor?: string }>`
   background-color: ${(props) => props.background ? props.background : '#fff'};
@@ -24,7 +25,7 @@ const SalesCard = styled.div<{ height: number, background?: string, textcolor?: 
   transition: all 0.5s ease-out;
 
   &:hover{
-    border:1.2px solid ${(props) => props.borderhovercolor ? props.borderhovercolor : '#000'};
+    border:1px solid ${(props) => props.borderhovercolor ? props.borderhovercolor : '#000'};
   }
 
   li{
@@ -71,11 +72,6 @@ const DropDownButton = styled.div<{ rotated: boolean }>`
   transform: ${({ rotated }) => rotated ? 'rotate(0deg)' : 'rotate(180deg)'};
 
 `;
-
-const cardHeight = {
-  mobileHeight: 265,
-  fullHeight: 450
-}
 
 export default function WhiteSalesCard(props: {
   salesInfo: SalesCardType,
