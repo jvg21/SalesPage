@@ -98,8 +98,17 @@ const PricingPagesSecondDiv = styled(StandartDiv)`
 const PricingPageInfoDiv = styled(StandartDiv)`
     margin: 20px 0;
     width: 70vw;
-    min-height: 92vh;
+    min-height: 89vh;
     gap: 40px;
+`;
+const SocialTestingDiv = styled(StandartDiv)`
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+    min-height: 86vh;
+    padding: 20px;
+    justify-content: space-around;
+    margin: 0vh 10vw ;
 `;
 
 const PricingDiv = styled(StandartDiv)`
@@ -121,7 +130,7 @@ const FAQDisplayDiv = styled(StandartDiv)`
     justify-content:space-evenly;
     flex-direction: row;
     flex-wrap: wrap;
-    padding: 30px;
+    padding: 30px 0;
     gap: 10px;
 `;
 
@@ -136,8 +145,8 @@ export function PricingPage() {
     const size = useWindowSize();
     const ref = useRef<HTMLDivElement | null>(null);
     const handleClick = () => ref.current?.scrollIntoView({ behavior: 'smooth' });
-    const refFaq = useRef<HTMLDivElement | null>(null);
-    const handleClick2 = () => refFaq.current?.scrollIntoView({ behavior: 'smooth' });
+    // const refFaq = useRef<HTMLDivElement | null>(null);
+    // const handleClick2 = () => refFaq.current?.scrollIntoView({ behavior: 'smooth' });
 
     const sizeVerification = size.height && size.height <= cardHeight.fullHeight;
 
@@ -167,6 +176,24 @@ export function PricingPage() {
                 </PricingPageInfoDiv>
 
 
+                {/* -------------------------------DEPOIMENTOS-------------------------------------*/}
+                <TitleDiv ref={!sizeVerification ? ref : null} background={PageTheme.primaryColor} >
+                    <T3 textcolor={PageTheme.secundaryTextColor} >PROVA SOCIAL</T3>
+                </TitleDiv>
+                <div style={{ background: "#fff", height: '1px', width: '100%' }}></div>
+                <SocialTestingDiv >
+
+                    <InfoCard width="350px" height="300px" background={PageTheme.backGroundColor} bordercolor={PageTheme.primaryColor}>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur vel sapiente optio aperiam assumenda earum nesciunt eaque! Quibusdam veniam at tempora ad, corporis ea ratione ipsa, saepe est debitis rem.</p>
+                    </InfoCard>
+                    <InfoCard width="350px" height="300px" background={PageTheme.backGroundColor} bordercolor={PageTheme.primaryColor}>
+                        <p>Lorem ips loreum dolor sit amet consectetur adipisicing elit. Tenetur vel sapiente optio aperiam assumenda earum nesciunt eaque! Quibusdam veniam at tempora ad, corporis ea ratione ipsa, saepe est debitis rem.</p>
+                    </InfoCard>
+                    <InfoCard width="350px" height="300px" background={PageTheme.backGroundColor} bordercolor={PageTheme.primaryColor}>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur vel sapiente optio aperiam assumenda earum nesciunt eaque! Quibusdam veniam at tempora ad, corporis ea ratione ipsa, saepe est debitis rem.</p>
+                    </InfoCard>
+                </SocialTestingDiv>
+
                 {/* -------------------------------PREÇOS-------------------------------------*/}
 
                 <TitleDiv ref={!sizeVerification ? ref : null} background={PageTheme.primaryColor} >
@@ -183,7 +210,7 @@ export function PricingPage() {
                     </CardsDisplayDiv>
                     <div style={{ width: "100%", background: PageTheme.backGroundColor }}> </div>
                     <InfoCard background={PageTheme.secundaryBackGroundColor} bordercolor={PageTheme.primaryColor} width="90%">
-                        <div style={{ display: "flex", flexDirection: "column", gap: "15px" }}  >
+                        <div style={{ display: "flex", flexDirection: "column", gap: "15px", justifyContent: 'center', alignItems: 'center' }}  >
                             <T2>Está com Dúvida?</T2>
                             <SalesPageButton url={Urls.AjudaUrl} textcolor={PageTheme.primaryTextColor}>{ConstantTexts.SalesTeamButton}</SalesPageButton>
                         </div>
@@ -193,7 +220,7 @@ export function PricingPage() {
 
                 {/* -------------------------------FAQ-------------------------------------*/}
 
-                <TitleDiv ref={refFaq} background={PageTheme.primaryColor}>
+                <TitleDiv background={PageTheme.primaryColor}>
                     <T3 textcolor={PageTheme.secundaryTextColor}>FAQ</T3>
                 </TitleDiv>
                 <div style={{ background: "#fff", height: '1px', width: '100%' }}></div>

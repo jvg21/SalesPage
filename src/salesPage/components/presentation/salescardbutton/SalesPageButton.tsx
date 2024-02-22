@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { GrFormNextLink } from "react-icons/gr";
-import { PageTheme } from "../themeconfig/ThemeConfig";
 
 const SalesButton = styled.button<{textcolor?:string,hovercolor?:string}>`
     background-color: transparent;
