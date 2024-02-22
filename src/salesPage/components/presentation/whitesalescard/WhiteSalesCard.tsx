@@ -112,19 +112,16 @@ export default function WhiteSalesCard(props: {
         {
           !dropDown &&
           <>
-            <hr />
+            <hr/>
             <ul>
               {
                 props.salesInfo.Info.map((x) => {
                   return (<li>{x}</li>)
                 })
-
               }
             </ul>
           </>
-
         }
-
         <SalesPageButton textcolor={props.textcolor} url={props.salesInfo.url}>Comprar</SalesPageButton>
       </SalesCard>
     </>

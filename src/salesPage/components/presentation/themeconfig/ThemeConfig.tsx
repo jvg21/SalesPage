@@ -9,6 +9,6 @@ export const PageTheme = {
     primaryHoverColor:'#680000',
     secundaryColor:'#fff',
     tertiaryColor: '#b3b3b3',
-    sucessGreen:'#023522'
+    successGreen:'#023522'
   
   }

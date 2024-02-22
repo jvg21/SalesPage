@@ -77,7 +77,7 @@ const PricingPageHomeButton = styled.button<{ background: string, textcolor?: st
     cursor: pointer;
     
     &:hover{
-        box-shadow: 0 5px 15px rgba(255, 255, 255, 0.5);
+        box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.5);
     }
     
     @media screen and (max-width: 700px){
@@ -147,11 +147,10 @@ export function PricingPage() {
             <PricingPageHomeDiv background={PageTheme.primaryColor} style={{ backgroundImage: `url(${background})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
                 <T1 textcolor={PageTheme.secundaryTextColor} >{ConstantTexts.HomeDivTitle}</T1>
                 <T3 textcolor={PageTheme.secundaryTextColor} >{ConstantTexts.HomeDivSubtitle}</T3>
-                <div style={{ height: "" }}> </div>
-
+                <div> </div>
                 <PricingPageHomeButtonDiv>
-                    <PricingPageHomeButton background={PageTheme.sucessGreen} textcolor={PageTheme.secundaryTextColor} onClick={() => handleClick()}>{ConstantTexts.HomeDivButtonPrice}</PricingPageHomeButton>
-                    {/* <PricingPageHomeButton background={PageTheme.sucessGreen} textcolor={PageTheme.secundaryTextColor} onClick={() => handleClick2()}>{ConstantTexts.HomeDivButtonFAQ}</PricingPageHomeButton> */}
+                    <PricingPageHomeButton background={PageTheme.successGreen} textcolor={PageTheme.secundaryTextColor} onClick={() => handleClick()}>{ConstantTexts.HomeDivButtonPrice}</PricingPageHomeButton>
+                    {/* <PricingPageHomeButton background={PageTheme.success} textcolor={PageTheme.secundaryTextColor} onClick={() => handleClick2()}>{ConstantTexts.HomeDivButtonFAQ}</PricingPageHomeButton> */}
                 </PricingPageHomeButtonDiv>
             </PricingPageHomeDiv>
 
@@ -164,8 +163,9 @@ export function PricingPage() {
                         <T2 textcolor={PageTheme.primaryColor}>{ConstantTexts.SecondDivTitle}</T2>
                     </div>
                     <Paragraph textcolor={PageTheme.secundaryTextColor}>{ConstantTexts.SecondDivParagraph}</Paragraph>
-                    <SalesPageButton url={Urls.AjudaUrl} textcolor={PageTheme.secundaryTextColor}>{ConstantTexts.SecondDivButton}</SalesPageButton>
+                    <SalesPageButton url={Urls.AjudaUrl} hovercolor={PageTheme.secundaryTextColor} textcolor={PageTheme.secundaryTextColor}>{ConstantTexts.SecondDivButton}</SalesPageButton>
                 </PricingPageInfoDiv>
+
 
                 {/* -------------------------------PREÇOS-------------------------------------*/}
 
@@ -182,7 +182,7 @@ export function PricingPage() {
                         }
                     </CardsDisplayDiv>
                     <div style={{ width: "100%", background: PageTheme.backGroundColor }}> </div>
-                    <InfoCard background={PageTheme.secundaryBackGroundColor} bordercolor={PageTheme.primaryColor}>
+                    <InfoCard background={PageTheme.secundaryBackGroundColor} bordercolor={PageTheme.primaryColor} width="90%">
                         <div style={{ display: "flex", flexDirection: "column", gap: "15px" }}  >
                             <T2>Está com Dúvida?</T2>
                             <SalesPageButton url={Urls.AjudaUrl} textcolor={PageTheme.primaryTextColor}>{ConstantTexts.SalesTeamButton}</SalesPageButton>
