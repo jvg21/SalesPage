@@ -173,7 +173,7 @@ export function PricingPage() {
                         <T2 textcolor={PageTheme.primaryColor}>{ConstantTexts.SecondDivTitle}</T2>
                     </div>
                     <Paragraph textcolor={PageTheme.secundaryTextColor}>{ConstantTexts.SecondDivParagraph}</Paragraph>
-                    <SalesPageButton url={Urls.AjudaUrl} hovercolor={PageTheme.secundaryTextColor} textcolor={PageTheme.secundaryTextColor}>{ConstantTexts.SecondDivButton}</SalesPageButton>
+                    <SalesPageButton url={Urls.InstitucionalUrl} hovercolor={PageTheme.secundaryTextColor} textcolor={PageTheme.secundaryTextColor}>{ConstantTexts.SecondDivButton}</SalesPageButton>
                 </PricingPageInfoDiv>
 
 
