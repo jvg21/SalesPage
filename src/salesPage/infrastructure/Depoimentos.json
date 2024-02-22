@@ -1,0 +1,14 @@
+[
+    {
+        "nome": "Depoimento de Aluno:",
+        "depoimento": "Participar deste evento foi uma experiência incrível! As palestras dos renomados juristas como [Nome do Palestrante 1] e [Nome do Palestrante 2] proporcionaram insights valiosos. Recomendo a todos os estudantes de direito!"
+    },
+    {
+        "nome": "Depoimento de Profissional:",
+        "depoimento": "Como advogado em exercício, participar do evento foi crucial para minha atualização profissional. Palestras inspiradoras de [Nome do Palestrante 3] e [Nome do Palestrante 4] realmente elevaram o nível do evento"
+    },
+    {
+        "nome": "Depoimento de Advogado Especializado:",
+        "depoimento": "O evento superou todas as expectativas em termos de conteúdo. As palestras, workshops e painéis liderados por especialistas como [Nome do Palestrante 10] foram incrivelmente informativos. Cada sessão ofereceu insights práticos e atualizados."
+    }
+]
