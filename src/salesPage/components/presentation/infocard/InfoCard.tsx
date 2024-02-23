@@ -1,6 +1,6 @@
 import { useWindowSize } from "@uidotdev/usehooks";
-import { ReactNode, useEffect } from "react";
 import styled from "styled-components";
+import { InfoCardType } from "../../../types/infocardtype/InfoCardType";
 
 
 const InfoCardContainer = styled.div<{ background?: string, bordercolor?: string, width?: string, height?: string }>`
@@ -15,7 +15,7 @@ const InfoCardContainer = styled.div<{ background?: string, bordercolor?: string
 
 `;
 
-export default function InfoCard(props: { children: ReactNode, background?: string, bordercolor?: string, width?: string, height?: string }) {
+export default function InfoCard(props: InfoCardType) {
 
     const size = useWindowSize();
     const sizeVerification = props.width && size.width && Number(props.width.replace(/[^0-9]/g, '')) > size.width;

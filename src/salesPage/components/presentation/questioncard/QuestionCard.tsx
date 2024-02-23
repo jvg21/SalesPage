@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { FaMinus } from "react-icons/fa6";
 import { FaPlus } from "react-icons/fa6";
 import { PageTheme } from "../themeconfig/ThemeConfig";
+import { QuestionCardType } from "../../../types/quesstioncardtype/QuestionCardType";
 
 // Definindo o estilo da div
 const Card = styled.div <{ background?: string, textcolor?: string }>`
@@ -54,12 +55,9 @@ background-color: transparent;
   padding: 5px 10px;
   margin-top: 10px;
 `;
-type Link = {
-  title: string,
-  url: string
-}
 
-export default function QuestionCard(props: { title: string, info: string[], link?: Link, background?: string, textcolor?: string }) {
+
+export default function QuestionCard(props: QuestionCardType) {
 
   const [isCollapsed, setIsCollapsed] = useState(true);
 
@@ -81,7 +79,6 @@ export default function QuestionCard(props: { title: string, info: string[], lin
             props.info.map((x) => {
               return (<>{x}<br /><br /></>)
             })
-
           }
           {
             props.link &&

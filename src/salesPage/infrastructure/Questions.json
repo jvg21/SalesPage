@@ -1,8 +1,8 @@
 [
     {
-        "id":0,
-        "Title":"Como obtenho o descontro de convênio? (ACADÊMICOS)",
-        "Description":[
+        "id": 0,
+        "Title": "Como obtenho o descontro de convênio? (ACADÊMICOS)",
+        "Description": [
             "Para obter o valor de conveniado na categoria acadêmico de graduação, é necessário que a sua Instituição de Ensino Superior seja conveniada e lhe forneça cupom promocional para ser inserido no ato da inscrição.",
             "Entre em contato conosco (simposio@abdconst.com.br) e garanta este benefício!",
             "* Se houver vagas nesta categoria, de acordo com a Lei nº 12.933/2013.",
@@ -11,9 +11,9 @@
         ]
     },
     {
-        "id":1,
-        "Title":"Como obtenho o descontro de convênio? (PROFISSIONAIS)",
-        "Description":[
+        "id": 1,
+        "Title": "Como obtenho o descontro de convênio? (PROFISSIONAIS)",
+        "Description": [
             "Para obter o valor de conveniado na categoria profissional (isto é, todos aqueles que não se enquadrem como acadêmico de graduação), é necessário que faça parte de alguma instituição (associação, faculdade, organização, sindicato e outros) conveniada. Para estabelecer convênio e garantir este benefício, entre em contato conosco (simposio@abdconst.com.br).",
             "* Destinados a ex-alunos da ABDConst.",
             "* As inscrições por empenho seguem o último valor da tabela",
@@ -21,57 +21,57 @@
         ]
     },
     {
-        "id":3,
-        "Title":"Quem São Os Palestrantes Confirmados?",
-        "Description":["A Lista Completa dos Palestrantes Pode Ser Acessada no Botão Abaixo:"],
-        "link":{
-            "title":"Acessar Lista de Palestrantes",
-            "url":"https://www.abdconst.com.br/simposios/xv/cronograma"
+        "id": 3,
+        "Title": "Quem São Os Palestrantes Confirmados?",
+        "Description": [
+            "A Lista Completa dos Palestrantes Pode Ser Acessada no Botão Abaixo:"
+        ],
+        "link": {
+            "title": "Acessar Lista de Palestrantes",
+            "url": "https://www.abdconst.com.br/simposios/xv/cronograma"
         }
     },
     {
-        "id":2,
-        "Title":"Onde Posso Acessar o Regulamento?",
-        "Description":["O regulamento pode ser acessado através do botão abaixo: "],
-        "link":{
-            "title":"Acessar o regulamento",
-            "url":"https://www.abdconst.com.br/simposios/xv/termos"
+        "id": 2,
+        "Title": "Onde Posso Acessar o Regulamento?",
+        "Description": [
+            "O regulamento pode ser acessado através do botão abaixo: "
+        ],
+        "link": {
+            "title": "Acessar o regulamento",
+            "url": "https://www.abdconst.com.br/simposios/xv/termos"
         }
     },
     {
-        "id":10,
-        "Title":"Como Receberei Meu Ingresso?",
-        "Description":["loresadadsdasdsaasddassaddassad"]
+        "id": 10,
+        "Title": "Como Receberei Minha Credencial?",
+        "Description": [
+            "A credencial será enviada para o participante no e-mail informado no cadastro da inscrição até 5 dias antes do evento. Caso o participante não tenha recebido a credencial no prazo estipulado deverá entrar em contato com: abdconst@abdconst.com.br",
+            "O uso da credencial é obrigatório para o trânsito no evento, bem como registro de presença para cômputo das horas/aula, devendo ser apresentada na entrada e saída de todas as conferências. Ressalte-se que não haverá no local do evento quaisquer meios para disponibilização física da credencial."
+        ]
     },
     {
-        "id":4,
-        "Title":"Quando Acontecerá o XV Simpósio Nacional de Direito Constitucional?",
-        "Description":["O XVSNDC acontecerá do dia 30/maio à 01/junho"]
+        "id": 5,
+        "Title": "Qual é a Frequência Minima Para a Emissão do Certificado?",
+        "Description": [
+            "SOMENTE SERÃO ENTREGUES CERTIFICADOS A PARTICIPANTES QUE TIVEREM PRESENÇA MÍNIMA DE 75% NAS CONFERÊNCIAS. A participação será comprovada por meio da conferência do registro realizado eletronicamente com a apresentação da credencial na entrada e saída das conferências.",
+            "Para efeito de contagem de 75% de frequência, deve-se considerar toda a programação, nos três dias de evento. Não serão emitidas certificações ou declarações de participação em conferências avulsas"
+        ]
     },
     {
-        "id":5,
-        "Title":"Qual é a Frequência Minima Para a Emissão do Certificado?",
-        "Description":["A presença minima que será nescessária para obter o certificado será 75% do total do evento"]
-    },
-    {
-        "id":6,
-        "Title":"Política de Cancelamento e Reembolso",
-        "Description":["loresadadsdasdsaasddassaddassad"]
-    },
-    {
-        "id":7,
-        "Title":"Qual é o Formato do Evento?",
-        "Description":["loresadadsdasdsaasddassaddassad"]
-    },
-    {
-        "id":8,
-        "Title":"Onde Acontecerá o XV Simpósio Nacional de Direito Constitucional?",
-        "Description":["loresadadsdasdsaasddassaddassad"]
-    },
-    {
-        "id":9,
-        "Title":"Qual é a Carga Horária Total do Evento?",
-        "Description":["loresadadsdasdsaasddassaddassad"]
+        "id": 6,
+        "Title": "Política de Cancelamento e Reembolso",
+        "Description": [
+            "O cancelamento deverá ser feito, exclusivamente, por meio do link abaixo (IR PARA CANCELAMENTO), até a data limite de 29/05/2024. A devolução dos valores pagos será realizada, a partir do dia 15/06/2024, via depósito em conta, conforme disposições que constam do link acima.",
+            "A política para cancelamento de inscrição compreende as seguintes regras:",
+            "(i) 90 dias de antecedência - Devolução de 60% do valor pago",
+            "(ii) 60 dias de antecedência - Devolução de 50% do valor pago",
+            "(iii) 30 dias de antecedência - Devolução de 40% do valor pago",
+            "OS CANCELAMENTOS REALIZADOS COM MENOS DE 30 DIAS DE ANTECEDÊNCIA DA DATA DO EVENTO NÃO RECEBERÃO RESTITUIÇÃO DE QUALQUER VALOR."
+        ],
+        "link": {
+            "title": "IR PARA CANCELAMENTO",
+            "url": "https://www.abdconst.com.br/simposios/xv/cancelamento"
+        }
     }
- 
 ]

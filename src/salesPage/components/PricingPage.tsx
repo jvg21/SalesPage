@@ -8,11 +8,13 @@ import PricingInfo from './../infrastructure/PricingInfo.json'
 import ConstantTexts from './../infrastructure/ConstantTexts.json'
 import Questions from './../infrastructure/Questions.json'
 import Depoimentos from './../infrastructure/Depoimentos.json'
+import Palestrantes from './../infrastructure/Palestrantes.json'
 import Urls from './../infrastructure/Urls.json'
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import background from './../images/mainbg.png'
 import { useWindowSize } from "@uidotdev/usehooks";
 import { cardHeight } from "./cardheight/CardHeight";
+import ImageCard from "./presentation/imagecard/ImageCard";
 
 const StandartDiv = styled.div<{ background?: string }>`
     background-color: ${(props) => props.background ? props.background : 'trasparent'};
@@ -149,7 +151,19 @@ export function PricingPage() {
     // const refFaq = useRef<HTMLDivElement | null>(null);
     // const handleClick2 = () => refFaq.current?.scrollIntoView({ behavior: 'smooth' });
 
+    
     const sizeVerification = size.height && size.height <= cardHeight.fullHeight;
+    
+    // const [currentCardIndex, setCurrentCardIndex] = useState(2);
+    // useEffect(() => {
+    //     // Atualiza o índice do card a cada 3 segundos (ou o intervalo desejado)
+    //     const intervalId = setInterval(() => {
+    //         setCurrentCardIndex((prevIndex) => (prevIndex + 1) % Palestrantes.length);
+    //     }, 400000);
+
+    //     // Limpa o intervalo quando o componente é desmontado
+    //     return () => clearInterval(intervalId);
+    // }, []);
 
     return (
         <>
@@ -177,9 +191,32 @@ export function PricingPage() {
                 </PricingPageInfoDiv>
 
 
+                {/* -------------------------------PALESTRANTES-------------------------------------*/}
+
+                {/* <TitleDiv ref={!sizeVerification ? ref : null} background={PageTheme.primaryColor} >
+                    <T3 textcolor={PageTheme.secundaryTextColor} >{ConstantTexts.Panelist}</T3>
+                </TitleDiv>
+                <div style={{ background: PageTheme.tertiaryBackGroundColor, height: '1px', width: '100%' }}></div>
+
+                <SocialTestingDiv background={PageTheme.backGroundColor}>
+                    {
+                        Palestrantes.map((x, id) => {
+                            if (id === currentCardIndex || id === currentCardIndex+1) {
+                                return (<ImageCard width="350px" height="350px" imageSrc={x.imageUrl} title={x.name} description={x.description} buttonSrc={x.moreButtonSrc} bordercolor={PageTheme.primaryColor}/>)
+                            }
+                        })
+                    }
+
+
+                               
+
+                    
+                </SocialTestingDiv> */}
+
+
                 {/* -------------------------------DEPOIMENTOS-------------------------------------*/}
                 <TitleDiv ref={!sizeVerification ? ref : null} background={PageTheme.primaryColor} >
-                    <T3 textcolor={PageTheme.secundaryTextColor} >PROVA SOCIAL</T3>
+                    <T3 textcolor={PageTheme.secundaryTextColor} >{ConstantTexts.DepoimentTitle}</T3>
                 </TitleDiv>
                 <div style={{ background: PageTheme.backGroundColor, height: '1px', width: '100%' }}></div>
                 <SocialTestingDiv >
@@ -188,9 +225,9 @@ export function PricingPage() {
                             return (
                                 <InfoCard width="350px" height="350px" background={PageTheme.backGroundColor} bordercolor={PageTheme.primaryColor}>
                                     <div style={{ textAlign: "justify", fontSize: "19px", lineHeight: "20px" }}>
-                                        <h3>{x.nome}</h3>
+                                        <h3>{x.name}</h3>
                                         <br />
-                                        <p>{x.depoimento}</p>
+                                        <p>{x.depoiment}</p>
                                     </div>
                                 </InfoCard>
 
@@ -202,7 +239,7 @@ export function PricingPage() {
                 {/* -------------------------------PREÇOS-------------------------------------*/}
 
                 <TitleDiv ref={!sizeVerification ? ref : null} background={PageTheme.primaryColor} >
-                    <T3 textcolor={PageTheme.secundaryTextColor} >INVESTIMENTO E CONDIÇÕES ESPECIAIS</T3>
+                    <T3 textcolor={PageTheme.secundaryTextColor} >{ConstantTexts.PriceTitle}</T3>
                 </TitleDiv>
                 <div style={{ background: PageTheme.tertiaryBackGroundColor, height: '1px', width: '100%' }}></div>
 
@@ -248,7 +285,6 @@ export function PricingPage() {
                 </FAQDisplayDiv>
 
                 {/* <CardsDisplayDiv >
-                    <ImageCard imageSrc={Urls.ImageUrl} title="dsasddsa" description="lorem ipsum ramdat ramidet hui ddsf" buttonSrc='www.google.com'></ImageCard>
                     <ImageCard imageSrc={Urls.ImageUrl} title="dsasddsa" description="lorem ipsum ramdat ramidet hui ddsf" buttonSrc='www.google.com'></ImageCard>
                     <ImageCard imageSrc={Urls.ImageUrl} title="dsasddsa" description="lorem ipsum ramdat ramidet hui ddsf" buttonSrc='www.google.com'></ImageCard>
                 </CardsDisplayDiv> */}

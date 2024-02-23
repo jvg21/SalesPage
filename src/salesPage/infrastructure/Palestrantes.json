@@ -1,0 +1,23 @@
+[
+    {
+        "name": "Professor 1:",
+        "description": "Professor",
+        "imageUrl":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-W4xjGG0vhPQk4yr42TcZyTi9TRvlXI7rRc2uQ4P__g&s",
+        "moreButtonSrc":"https://google.com"
+
+    },
+    {
+        "name": "Juiz 1:",
+        "description": "juiz",
+        "imageUrl":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-W4xjGG0vhPQk4yr42TcZyTi9TRvlXI7rRc2uQ4P__g&s",
+        "moreButtonSrc":"https://google.com"
+
+    },
+    {
+        "name": "Professor2:",
+        "description": "Professor2",
+        "imageUrl":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-W4xjGG0vhPQk4yr42TcZyTi9TRvlXI7rRc2uQ4P__g&s",
+        "moreButtonSrc":"https://google.com"
+
+    }
+]

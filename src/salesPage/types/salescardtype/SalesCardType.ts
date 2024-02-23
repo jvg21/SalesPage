@@ -1,4 +1,3 @@
-import { Component, ReactElement } from "react"
 
 export type SalesCardType = {
     Title:string,
