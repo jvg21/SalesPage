@@ -172,13 +172,13 @@ export function PricingPage() {
 
             <Divider background={PageTheme.backGroundColor} height="3px" />
             <PricingPagesSecondDiv background={PageTheme.tertiaryBackGroundColor}>
-                
+
 
                 {/* -------------------------------APRESENTAÇÃO-------------------------------------*/}
 
                 <PricingPageInfoDiv>
 
-                    <div style={{ background: "#fff", borderRadius: "25px", padding: "15px" }}>
+                    <div style={{ background: PageTheme.backGroundColor, borderRadius: "25px", padding: "15px" }}>
                         <T2 textcolor={PageTheme.primaryColor}>{ConstantTexts.SecondDivTitle}</T2>
                     </div>
 
