@@ -10,11 +10,13 @@ import Questions from './../infrastructure/Questions.json'
 import Depoimentos from './../infrastructure/Depoimentos.json'
 import Palestrantes from './../infrastructure/Palestrantes.json'
 import Urls from './../infrastructure/Urls.json'
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import background from './../images/mainbg.png'
 import { useWindowSize } from "@uidotdev/usehooks";
 import { cardHeight } from "./cardheight/CardHeight";
 import ImageCard from "./presentation/imagecard/ImageCard";
+import { DepoimentCard } from "./depoimentscard/DepoimentCard";
+import { InfoCardType } from "../types/infocardtype/InfoCardType";
 
 const StandartDiv = styled.div<{ background?: string }>`
     background-color: ${(props) => props.background ? props.background : 'trasparent'};
@@ -143,27 +145,18 @@ const TitleDiv = styled(StandartDiv)`
     padding: 15px;
 
 `;
+const Divider = styled.div<{ background?: string, height?: string }>`
+    background-color: ${(props) => props.background ? props.background : 'transparent'};
+    height: ${(props) => props.height ? props.height : '1px'};
+    width: 100%;
+`;
 
 export function PricingPage() {
     const size = useWindowSize();
     const ref = useRef<HTMLDivElement | null>(null);
     const handleClick = () => ref.current?.scrollIntoView({ behavior: 'smooth' });
-    // const refFaq = useRef<HTMLDivElement | null>(null);
-    // const handleClick2 = () => refFaq.current?.scrollIntoView({ behavior: 'smooth' });
 
-    
     const sizeVerification = size.height && size.height <= cardHeight.fullHeight;
-    
-    // const [currentCardIndex, setCurrentCardIndex] = useState(2);
-    // useEffect(() => {
-    //     // Atualiza o índice do card a cada 3 segundos (ou o intervalo desejado)
-    //     const intervalId = setInterval(() => {
-    //         setCurrentCardIndex((prevIndex) => (prevIndex + 1) % Palestrantes.length);
-    //     }, 400000);
-
-    //     // Limpa o intervalo quando o componente é desmontado
-    //     return () => clearInterval(intervalId);
-    // }, []);
 
     return (
         <>
@@ -171,65 +164,46 @@ export function PricingPage() {
             <PricingPageHomeDiv background={PageTheme.primaryColor} style={{ backgroundImage: `url(${background})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
                 <T1 textcolor={PageTheme.secundaryTextColor} >{ConstantTexts.HomeDivTitle}</T1>
                 <T3 textcolor={PageTheme.secundaryTextColor} >{ConstantTexts.HomeDivSubtitle}</T3>
-                <div> </div>
+                <Divider />
                 <PricingPageHomeButtonDiv>
                     <PricingPageHomeButton background={PageTheme.successGreen} textcolor={PageTheme.secundaryTextColor} onClick={() => handleClick()}>{ConstantTexts.HomeDivButtonPrice}</PricingPageHomeButton>
-                    {/* <PricingPageHomeButton background={PageTheme.success} textcolor={PageTheme.secundaryTextColor} onClick={() => handleClick2()}>{ConstantTexts.HomeDivButtonFAQ}</PricingPageHomeButton> */}
                 </PricingPageHomeButtonDiv>
             </PricingPageHomeDiv>
 
-            {/* -------------------------------APRESENTAÇÃO-------------------------------------*/}
-
-            <div style={{ background: PageTheme.backGroundColor, height: '3px', width: '100%' }}></div>
+            <Divider background={PageTheme.backGroundColor} height="3px" />
             <PricingPagesSecondDiv background={PageTheme.tertiaryBackGroundColor}>
-                <PricingPageInfoDiv  >
+                
+
+                {/* -------------------------------APRESENTAÇÃO-------------------------------------*/}
+
+                <PricingPageInfoDiv>
+
                     <div style={{ background: "#fff", borderRadius: "25px", padding: "15px" }}>
                         <T2 textcolor={PageTheme.primaryColor}>{ConstantTexts.SecondDivTitle}</T2>
                     </div>
+
                     <Paragraph textcolor={PageTheme.secundaryTextColor}>{ConstantTexts.SecondDivParagraph}</Paragraph>
-                    <SalesPageButton url={Urls.InstitucionalUrl} hovercolor={PageTheme.secundaryTextColor} textcolor={PageTheme.secundaryTextColor}>{ConstantTexts.SecondDivButton}</SalesPageButton>
+                    <SalesPageButton
+                        url={Urls.InstitucionalUrl}
+                        hovercolor={PageTheme.secundaryTextColor}
+                        textcolor={PageTheme.secundaryTextColor}>
+                        {ConstantTexts.SecondDivButton}
+                    </SalesPageButton>
+
                 </PricingPageInfoDiv>
-
-
-                {/* -------------------------------PALESTRANTES-------------------------------------*/}
-
-                {/* <TitleDiv ref={!sizeVerification ? ref : null} background={PageTheme.primaryColor} >
-                    <T3 textcolor={PageTheme.secundaryTextColor} >{ConstantTexts.Panelist}</T3>
-                </TitleDiv>
-                <div style={{ background: PageTheme.tertiaryBackGroundColor, height: '1px', width: '100%' }}></div>
-
-                <SocialTestingDiv background={PageTheme.backGroundColor}>
-                    {
-                        Palestrantes.map((x, id) => {
-                            if (id === currentCardIndex || id === currentCardIndex+1) {
-                                return (<ImageCard width="350px" height="350px" imageSrc={x.imageUrl} title={x.name} description={x.description} buttonSrc={x.moreButtonSrc} bordercolor={PageTheme.primaryColor}/>)
-                            }
-                        })
-                    }
-
-
-                               
-
-                    
-                </SocialTestingDiv> */}
-
 
                 {/* -------------------------------DEPOIMENTOS-------------------------------------*/}
                 <TitleDiv ref={!sizeVerification ? ref : null} background={PageTheme.primaryColor} >
                     <T3 textcolor={PageTheme.secundaryTextColor} >{ConstantTexts.DepoimentTitle}</T3>
                 </TitleDiv>
-                <div style={{ background: PageTheme.backGroundColor, height: '1px', width: '100%' }}></div>
+                <Divider background={PageTheme.backGroundColor} height="1px" />
+
                 <SocialTestingDiv >
                     {
                         Depoimentos.map((x) => {
                             return (
-                                <InfoCard width="350px" height="350px" background={PageTheme.backGroundColor} bordercolor={PageTheme.primaryColor}>
-                                    <div style={{ textAlign: "justify", fontSize: "19px", lineHeight: "20px" }}>
-                                        <h3>{x.name}</h3>
-                                        <br />
-                                        <p>{x.depoiment}</p>
-                                    </div>
-                                </InfoCard>
+
+                                <DepoimentCard styleCard={{ background: PageTheme.backGroundColor, bordercolor: PageTheme.primaryColor, width: "350px", height: "350px" }} info={x} />
 
                             )
                         })
@@ -241,32 +215,35 @@ export function PricingPage() {
                 <TitleDiv ref={!sizeVerification ? ref : null} background={PageTheme.primaryColor} >
                     <T3 textcolor={PageTheme.secundaryTextColor} >{ConstantTexts.PriceTitle}</T3>
                 </TitleDiv>
-                <div style={{ background: PageTheme.tertiaryBackGroundColor, height: '1px', width: '100%' }}></div>
 
                 <PricingDiv background={PageTheme.backGroundColor}>
                     <CardsDisplayDiv ref={sizeVerification ? ref : null} >
                         {
                             PricingInfo.map((x) => {
-                                return (<WhiteSalesCard salesInfo={x} background={PageTheme.secundaryBackGroundColor} borderhovercolor={PageTheme.primaryColor} bordercolor={PageTheme.primaryTextColor} secundarytextcolor={PageTheme.tertiaryTextColor} />)
+                                return (
+                                    <WhiteSalesCard salesInfo={x}
+                                        background={PageTheme.secundaryBackGroundColor}
+                                        borderhovercolor={PageTheme.primaryColor}
+                                        bordercolor={PageTheme.primaryTextColor}
+                                        secundarytextcolor={PageTheme.tertiaryTextColor}
+                                    />)
                             })
                         }
                     </CardsDisplayDiv>
-                    <div style={{ width: "100%", background: PageTheme.backGroundColor }}> </div>
-                    <InfoCard background={PageTheme.secundaryBackGroundColor} bordercolor={PageTheme.primaryColor} width="90%">
-                        <div style={{ display: "flex", flexDirection: "column", gap: "15px", justifyContent: 'center', alignItems: 'center' }}  >
-                            <T2>Está com Dúvida?</T2>
-                            <SalesPageButton url={Urls.AjudaUrl} textcolor={PageTheme.primaryTextColor}>{ConstantTexts.SalesTeamButton}</SalesPageButton>
-                        </div>
-                    </InfoCard>
+
+                    <Divider background={PageTheme.backGroundColor} height="10px" />
+                    <HelpInfoCard styleCard={{background:PageTheme.backGroundColor,bordercolor:PageTheme.primaryTextColor,width:"90%"}}/>
+
                 </PricingDiv>
-                <div style={{ width: "100%", background: PageTheme.backGroundColor }}> </div>
+                <Divider background={PageTheme.backGroundColor} height="10px" />
 
                 {/* -------------------------------FAQ-------------------------------------*/}
 
                 <TitleDiv background={PageTheme.primaryColor}>
                     <T3 textcolor={PageTheme.secundaryTextColor}>FAQ</T3>
                 </TitleDiv>
-                <div style={{ background: PageTheme.backGroundColor, height: '1px', width: '100%' }}></div>
+                <Divider background={PageTheme.backGroundColor} height="1px" />
+
                 <FAQDisplayDiv background={PageTheme.tertiaryBackGroundColor}>
                     {
                         Questions.map((question) => {
@@ -297,4 +274,16 @@ export function PricingPage() {
 
         </>
     );
+}
+
+export function HelpInfoCard(props:{styleCard:InfoCardType}) {
+    const {styleCard} = props
+    return (
+        <InfoCard background={styleCard.background} bordercolor={styleCard.bordercolor} width={styleCard.width} height={styleCard.height}>
+            <div style={{ display: "flex", flexDirection: "column", gap: "15px", justifyContent: 'center', alignItems: 'center' }}  >
+                <T2>Está com Dúvida?</T2>
+                <SalesPageButton url={Urls.AjudaUrl} textcolor={styleCard.bordercolor}>{ConstantTexts.SalesTeamButton}</SalesPageButton>
+            </div>
+        </InfoCard>
+    )
 }
