@@ -73,5 +73,14 @@
             "title": "IR PARA CANCELAMENTO",
             "url": "https://www.abdconst.com.br/simposios/xv/cancelamento"
         }
+    },
+    {
+        "id": 11,
+        "Title": "Inscrições Por Nota de Empenho",
+        "Description": [
+            "A inscrição será feita através do Email",
+            "Email: teste@teste.dev"
+        ]
+       
     }
 ]

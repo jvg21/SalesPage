@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { GrFormNextLink } from "react-icons/gr";
 
-const SalesButton = styled.button<{textcolor?:string,hovercolor?:string}>`
+export const SalesButton = styled.button<{textcolor?:string,hovercolor?:string}>`
     background-color: transparent;
     height: 40px;
     display: flex;

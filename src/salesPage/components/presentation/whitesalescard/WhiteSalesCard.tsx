@@ -1,9 +1,7 @@
 import styled from "styled-components";
-import { SalesPageButton } from "../salescardbutton/SalesPageButton";
-import { PageTheme } from "../themeconfig/ThemeConfig";
+import { SalesButton, SalesPageButton } from "../salescardbutton/SalesPageButton";
 import { useEffect, useState } from "react";
 import { useWindowSize } from "@uidotdev/usehooks";
-import { SalesCardType } from "../../../types/salescardtype/SalesCardType";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import { cardHeight } from "../../cardheight/CardHeight";
 import { WhiteSalesCardType } from "../../../types/whitesalescardtype/WhiteSalesCardType";
@@ -24,9 +22,34 @@ const SalesCard = styled.div<{ height: number, background?: string, textcolor?: 
   font-family: Monserat,sans-serif;
   margin: 0px 1vw;
   transition: all 0.5s ease-out;
+  cursor: pointer;
 
   &:hover{
     border:1px solid ${(props) => props.borderhovercolor ? props.borderhovercolor : '#000'};
+  }
+  &:hover ${SalesButton} {
+    a{
+      color: ${(props)=>props.textcolor?props.textcolor:"black"};
+        position: relative;
+        padding: 0 2px;
+        display: inline-flex;
+        align-items: center;
+        text-align: left;
+        font-size: 18px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        text-decoration: none;
+    }
+    a:after{
+        background-color: ${(props)=>props.textcolor?props.textcolor:"black"};
+        position: absolute;
+        left: 0;
+        bottom: 0px;
+        height: 1.5px;
+        content: "";
+        transition: 0.5s;
+        width: 100%;
+    }
   }
 
   li{

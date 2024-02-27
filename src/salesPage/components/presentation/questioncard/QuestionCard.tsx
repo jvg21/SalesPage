@@ -16,6 +16,9 @@ const Card = styled.div <{ background?: string, textcolor?: string }>`
   margin: 10px;
   overflow: auto;
 
+  @media screen and (min-width:1350px) {
+    width: 40%;
+  }
   @media screen and (max-width:800px) {
     width: 95vw;
   }
